@@ -12,4 +12,10 @@ jobs:
         # see https://github.com/marketplace/actions/arm-runner#base_image
         base_image: raspios_lite_arm64:latest
         commands: |
-           uname -a
+           uname -a > /tmp/info.txt
+        copy_artifact_path: /tmp/info.txt
+    - name: Upload release image
+      uses: actions/upload-artifact@v2
+      with:
+        name: Info
+        path: info.txt
