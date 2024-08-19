@@ -1,0 +1,13 @@
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: pguyot/arm-runner-action@v2
+      with:
+        # see https://github.com/marketplace/actions/arm-runner#cpu
+        cpu: cortex-a7
+        # see https://github.com/marketplace/actions/arm-runner#base_image
+        base_image: raspios_lite_arm64:latest
+        commands: |
+           uname -a
